@@ -22,12 +22,19 @@ def home():
 def page(page_name):
     return render_template(page_name)
 
+def write_to_file(data):
+	with open('data.txt', mode='a') as database:
+		email = data["email"]
+		subject = data["subject"]
+		message = data["message"]
+		file = database.write(f'\n{email},{subject},{message}')
 
 @app.route('/submit_form', methods=['POST', 'GET'])
 def submit_form():
 	if request.method == 'POST':
 		data = request.form.to_dict()
-		print(data)
+		# print(data)
+		write_to_file(data)
 		return redirect('/thanks.html')
 	else:
 		return "something went wrong("	
