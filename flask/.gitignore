@@ -1,5 +1,7 @@
 *.bak
 *.log
+*.txt
+*.csv
 __pycache__/*
 bin/*
 lib/*
